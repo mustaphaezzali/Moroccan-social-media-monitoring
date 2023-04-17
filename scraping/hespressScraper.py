@@ -28,6 +28,10 @@ driver.maximize_window()
 #time.sleep(5)
 #links = driver.find_elements(By.XPATH,"//a[@class='stretched-link']//@href")
 #links = driver.find_element(By.XPATH,"//a[@class='stretched-link']//@href")
+#wait for the page to scroll down
+for i in range(10):
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(1)
 links =  WebDriverWait(driver, 5).until(EC.presence_of_all_elements_located((By.XPATH,"//a[contains(@class,'stretched-link')]")))
 
 urls = []
@@ -36,5 +40,5 @@ for link in links:
     urls.append(url)
 
 # Print the extracted links
-print(urls)
+print(urls,len(urls))
 
