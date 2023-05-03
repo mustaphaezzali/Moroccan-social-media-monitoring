@@ -22,6 +22,13 @@ def transform(arabic_date):
     day_name, day, month_name, year, hour, minute = match.groups()
     month = months[month_name]
     date_object = datetime.date(int(year), month, int(day))
-    return date_object
+    return date_object,int(day)
+
+def transform_for_comment(arabic_date):
+    match = re.match(pattern, arabic_date)
+    day_name, day, month_name, year, hour, minute = match.groups()
+    month = months[month_name]
+    date_object = datetime.date(int(year), month, int(day))
+    return date_object.strftime('%Y-%m-%d')
 
 

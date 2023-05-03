@@ -17,7 +17,7 @@ def ferch_urls(start_date,end_date):
         reader = csv.reader(file)
         for row in reader:
             try:
-                date = transform(row[1])
+                date = transform(row[1])[0]
                 if start_date <= date and date <= end_date:
                     print(row[2])
                     urls_cats.append((row[2],row[3]))
